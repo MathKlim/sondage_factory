@@ -53,10 +53,12 @@ st.header(
 questions = st.multiselect(
     "question", list(df_redux.columns), default=["Raison sociale"]
 )
-questions
 
-vals = df_redux[questions].value_counts()
-st.table(vals)
+if questions == []:
+    st.write("Vous devez au moins choisir une colonne !")
+else:
+    vals = df_redux[questions].value_counts()
+    st.table(vals)
 # st.dataframe(df_redux[questions])
 
 
