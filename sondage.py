@@ -47,7 +47,12 @@ df_redux = fill_df(df_redux)
 
 st.dataframe(df_redux)
 
-questions = st.multiselect("question", df_redux.columns)
+st.header(
+    "Sélectionnez une ou plusieurs questions pour obtenir des statistiques croisées"
+)
+questions = st.multiselect(
+    "question", df_redux.columns, default="Raison sociale"
+)
 questions
 
 vals = df_redux[questions].value_counts()
