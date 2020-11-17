@@ -1,11 +1,15 @@
 import altair as alt
 import numpy as np
-import openpyxl
+
+# import openpyxl
 import pandas as pd
 import streamlit as st
-from openpyxl.utils.dataframe import dataframe_to_rows
+
+# from openpyxl.utils.dataframe import dataframe_to_rows
 
 df = pd.read_excel("Sondage.xlsx")
+
+st.title("Résumé du sondage factory 4.0 pour le côté Hauts-de-France")
 
 cols1 = [
     c
@@ -71,18 +75,18 @@ st.table(vals)
 # ]
 
 
-st.sidebar.markdown("# Enregistrement du fichier")
-save_name = st.sidebar.text_input("Nom du fichier", "sondage_nettoye")
-export = st.sidebar.button("Enregistrer")
+# st.sidebar.markdown("# Enregistrement du fichier")
+# save_name = st.sidebar.text_input("Nom du fichier", "sondage_nettoye")
+# export = st.sidebar.button("Enregistrer")
 
-if export:
-    wb = openpyxl.Workbook()
-    ws = wb.active
+# if export:
+#     wb = openpyxl.Workbook()
+#     ws = wb.active
 
-    for r in dataframe_to_rows(df_redux, index=True, header=True):
-        ws.append(r)
+#     for r in dataframe_to_rows(df_redux, index=True, header=True):
+#         ws.append(r)
 
-    for cell in ws["A"] + ws[1]:
-        cell.style = "Pandas"
+#     for cell in ws["A"] + ws[1]:
+#         cell.style = "Pandas"
 
-    wb.save(f"{save_name}.xlsx")
+#     wb.save(f"{save_name}.xlsx")
