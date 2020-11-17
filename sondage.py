@@ -51,7 +51,7 @@ st.header(
     "Sélectionnez une ou plusieurs questions pour obtenir des statistiques croisées"
 )
 questions = st.multiselect(
-    "question", df_redux.columns, default=["Raison sociale"]
+    "question", list(df_redux.columns), default=["Raison sociale"]
 )
 questions
 
