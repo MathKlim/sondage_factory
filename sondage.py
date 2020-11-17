@@ -1,13 +1,12 @@
-import altair as alt
 import numpy as np
-
-# import openpyxl
 import pandas as pd
 import streamlit as st
 
-# from openpyxl.utils.dataframe import dataframe_to_rows
+pd.options.mode.chained_assignment = None  # default='warn'
 
 df = pd.read_excel("Sondage.xlsx")
+df = df.iloc[1:]
+
 
 st.title("Résumé du sondage factory 4.0 pour le côté Hauts-de-France")
 
@@ -59,41 +58,3 @@ if questions == []:
 else:
     vals = df_redux[questions].value_counts()
     st.table(vals)
-# st.dataframe(df_redux[questions])
-
-
-# num_questions = [
-#     "De quelle région votre entreprise provient-elle ?",
-#     "Quel est votre chiffre d’affaire annuel ?",
-#     "Combien de personnes employez-vous ?",
-#     "Comment qualifieriez-vous votre niveau de connaissances dans l’industrie 4.0, avant d’être accompagné par le programme Factory 4.0 ?",
-#     "Que vous a apporté l’accompagnement Factory 4.0 ?",
-#     "Dans quelles proportions le projet Factory 4.0 a aidé votre entreprise à faire sa transition vers l’industrie 4.0 ?",
-#     "Souhaitez-vous explorer de nouvelles opportunités d’accompagnement/de projet avec l’un des partenaires du programme ?",
-#     "Si oui, lequel ?",
-#     "À la suite de votre accompagnement par le programme Factory 4.0, pensez-vous investir ? (Définition large incluant infrastructure, équipement, software, formation…).",
-#     "Si vous avez déjà investi, quelle est la nature de cet investissement ?",
-#     "L’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils contribué à vous fournir un avantage compétitif ?",
-#     "Le programme d’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils contribué à pérenniser l’emploi dans votre entreprise ?",
-#     "Le programme d’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils contribué à créer de nouveaux emplois ?",
-#     "Le programme d’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils contribué faire monter en compétence certains employés ?",
-#     "Le programme d’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils eu un impact sur les conditions de travail de vos employés (santé, sécurité, ergonomie) ?",
-#     "Le programme d’accompagnement Factory 4.0 et/ou l’investissement associé ont-ils eu un impact environnemental dans votre entreprise ?",
-# ]
-
-
-# st.sidebar.markdown("# Enregistrement du fichier")
-# save_name = st.sidebar.text_input("Nom du fichier", "sondage_nettoye")
-# export = st.sidebar.button("Enregistrer")
-
-# if export:
-#     wb = openpyxl.Workbook()
-#     ws = wb.active
-
-#     for r in dataframe_to_rows(df_redux, index=True, header=True):
-#         ws.append(r)
-
-#     for cell in ws["A"] + ws[1]:
-#         cell.style = "Pandas"
-
-#     wb.save(f"{save_name}.xlsx")
