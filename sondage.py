@@ -11,7 +11,7 @@ df = df.iloc[1:]
 
 df_nl = pd.read_excel("Sondage_NL.xlsx")
 
-st.title("Résumé du sondage factory 4.0 pour le côté Hauts-de-France")
+st.title("Résumé du sondage factory 4.0")
 
 cols1 = [
     c
