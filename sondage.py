@@ -5,6 +5,12 @@ import pandas as pd
 import streamlit as st
 from openpyxl import load_workbook
 
+st.set_page_config(
+    page_title="Condage Factory 4.0",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
 pd.options.mode.chained_assignment = None  # default='warn'
 
 st.sidebar.image("logo/Logo_CITC_Gris.png", use_column_width=True)
@@ -100,6 +106,9 @@ if fr:
         "question", list(df_redux.columns), default=["Raison sociale"]
     )
 
+    for i, q in enumerate(questions):
+        st.markdown(f"- Colonne {i+1} : {q}")
+
     if questions == []:
         st.write("Vous devez au moins choisir une colonne !")
     else:
@@ -112,12 +121,15 @@ if nl:
     st.header(
         "Sélectionnez une ou plusieurs questions pour obtenir des statistiques croisées"
     )
-    questions = st.multiselect(
+    questions_nl = st.multiselect(
         "question", list(df_nl_redux.columns), default=["Handelsnaam"]
     )
 
-    if questions == []:
+    for i, q in enumerate(questions_nl):
+        st.markdown(f"- Colonne {i+1} : {q}")
+
+    if questions_nl == []:
         st.write("Vous devez au moins choisir une colonne !")
     else:
-        vals = df_nl_redux[questions].value_counts()
+        vals = df_nl_redux[questions_nl].value_counts()
         st.table(vals)
